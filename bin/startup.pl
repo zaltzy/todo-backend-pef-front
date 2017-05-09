@@ -21,19 +21,19 @@ PEF::Front::Route::add_route(
 		my $method = ucfirst lc $req->method;
 		if ($req->path =~ m'^/(\d+)') {
 			$req->param(id => $1);
-			if ($method eq 'Get' || $method eq 'Patch' || $method eq 'Put') {
-				my $item = DBC::Todo->findOneById($1);
-				if (!$item) {
-					return [undef, 'L=404'];
-				}
-				$req->note(item => $item);
+		}
+		if (defined($req->param('id')) && ($method eq 'Get' || $method eq 'Patch' || $method eq 'Put')) {
+			my $item = DBC::Todo->findOneById($req->param('id'));
+			if (!$item) {
+				return [undef, 'L=404'];
 			}
+			$req->note(item => $item);
 		}
 		my $action = 'ajax';
-		if (defined $req->param('id')) {
+		if (defined $req->param('id') || $method eq 'Post') {
 			$action .= $method . 'Todo';
 		} else {
-			$action .= 'AllTodos';
+			$action .= $method . 'AllTodos';
 		}
 		return [$action, 'L'];
 	} => undef,

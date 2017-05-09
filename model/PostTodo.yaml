@@ -1,0 +1,4 @@
+---
+params:
+  title: $title
+model: Item::create

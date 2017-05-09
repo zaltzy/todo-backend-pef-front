@@ -13,7 +13,7 @@ sub get {
 sub update {
 	my ($req, $ctx) = @_;
 	for (qw|title completed|) {
-		$ctx->{item}->set($_ => $req->{$_}) if defined $req->{$_};
+		$ctx->{item}->$_($req->{$_}) if defined $req->{$_};
 	}
 	return {answer_data => $ctx->{item}->data, result => "OK"};
 }
@@ -26,9 +26,9 @@ sub delete {
 
 sub create {
 	my ($req, $ctx) = @_;
-	my $item = new_row(title => $req->{title});
+	my $item = new_row('todo', title => $req->{title}, completed => 0);
 	$item->fetch;
-	return {answer_data => $item, result => "OK"};
+	return {answer_data => $item->data, result => "OK"};
 }
 
 1;
