@@ -1,0 +1,10 @@
+---
+params:
+  positive_integer: ^\d+$
+  bool:
+    can_number: [0, 1]
+    default: 0
+  title:
+    max-size: 400
+  completed: $bool
+  id: $positive_integer

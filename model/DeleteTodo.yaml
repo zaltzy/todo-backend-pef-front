@@ -1,0 +1,4 @@
+---
+params:
+  id: $id
+model: Item::delete

@@ -1,0 +1,6 @@
+---
+params:
+  id:
+    base: $id
+    filter: Item::load
+model: Item::get

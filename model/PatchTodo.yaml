@@ -1,0 +1,12 @@
+---
+params:
+  id:
+    base: $id
+    filter: Item::load
+  title:
+    base: $title
+    optional: true
+  completed:
+    base: $completed
+    optional: true
+model: Item::update
