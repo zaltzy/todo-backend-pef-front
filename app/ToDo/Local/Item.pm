@@ -6,7 +6,7 @@ use warnings;
 
 sub get {
 	my ($req, $ctx) = @_;
-	return {answer_data => $ctx->{item}->data, result => "OK"};
+	return {answer_data => $ctx->{item}, result => "OK"};
 }
 
 # put & patch
@@ -15,7 +15,7 @@ sub update {
 	for (qw|title completed|) {
 		$ctx->{item}->$_($req->{$_}) if defined $req->{$_};
 	}
-	return {answer_data => $ctx->{item}->data, result => "OK"};
+	return {answer_data => $ctx->{item}, result => "OK"};
 }
 
 sub delete {
@@ -28,7 +28,7 @@ sub create {
 	my ($req, $ctx) = @_;
 	my $item = new_row('todo', title => $req->{title}, completed => 0);
 	$item->fetch;
-	return {answer_data => $item->data, result => "OK"};
+	return {answer_data => $item, result => "OK"};
 }
 
 1;
