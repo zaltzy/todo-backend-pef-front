@@ -1,0 +1,1 @@
+do "./bin/startup.pl";
