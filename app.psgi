@@ -1,1 +1,2 @@
-do "./bin/startup.pl";
+#!/usr/bin/perl
+do "/app/bin/startup.pl";
