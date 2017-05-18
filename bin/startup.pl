@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-use lib qw'app ../app';
+use lib qw'app ../app /app/app';
 
 use ToDo::AppFrontConfig;
 use PEF::Front::Preload qw(no_out_filters);
