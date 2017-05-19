@@ -16,4 +16,7 @@ sub cfg_db_name              {$dsn}
 sub cfg_no_multilang_support {1}
 sub cfg_no_nls               {1}
 
+our @EXPORT = qw(cfg_main_url);
+sub cfg_main_url {"https://todo-backend-pef-front.herokuapp.com/$_[0]"}
+
 1;

@@ -3,10 +3,11 @@ use DBIx::Struct qw(connector hash_ref_slice);
 
 use strict;
 use warnings;
+use ToDo::Utils;
 
 sub get {
 	my ($req, $ctx) = @_;
-	return {answer_data => $ctx->{item}, result => "OK"};
+	return {answer_data => todo_with_url($ctx->{item}->TO_JSON), result => "OK"};
 }
 
 # put & patch
@@ -15,7 +16,7 @@ sub update {
 	for (qw|title completed|) {
 		$ctx->{item}->$_($req->{$_}) if defined $req->{$_};
 	}
-	return {answer_data => $ctx->{item}, result => "OK"};
+	return {answer_data => todo_with_url($ctx->{item}->TO_JSON), result => "OK"};
 }
 
 sub delete {
@@ -28,7 +29,7 @@ sub create {
 	my ($req, $ctx) = @_;
 	my $item = new_row('todo', title => $req->{title}, completed => 0);
 	$item->fetch;
-	return {answer_data => $item, result => "OK"};
+	return {answer_data => todo_with_url($item->TO_JSON), result => "OK"};
 }
 
 1;
