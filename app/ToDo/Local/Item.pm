@@ -27,7 +27,12 @@ sub delete {
 
 sub create {
 	my ($req, $ctx) = @_;
-	my $item = new_row('todo', title => $req->{title}, completed => 0);
+	my $item = new_row(
+		'todo',
+		title     => $req->{title},
+		completed => 0,
+		order     => $req->{order}
+	);
 	$item->fetch;
 	return {answer_data => todo_with_url($item->TO_JSON), result => "OK"};
 }
