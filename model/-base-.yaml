@@ -8,3 +8,5 @@ params:
     max-size: 400
   completed: $bool
   id: $positive_integer
+  order: $positive_integer
+  

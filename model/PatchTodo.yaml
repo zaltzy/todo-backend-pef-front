@@ -9,4 +9,7 @@ params:
   completed:
     base: $completed
     optional: true
+  order:
+    base: $order
+    optional: true
 model: Item::update
