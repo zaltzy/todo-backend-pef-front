@@ -1,4 +1,5 @@
 ---
 params:
   title: $title
+  order: $order
 model: Item::create
