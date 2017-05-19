@@ -13,7 +13,7 @@ sub get {
 # put & patch
 sub update {
 	my ($req, $ctx) = @_;
-	for (qw|title completed|) {
+	for (qw|title completed order|) {
 		$ctx->{item}->$_($req->{$_}) if defined $req->{$_};
 	}
 	return {answer_data => todo_with_url($ctx->{item}->TO_JSON), result => "OK"};
