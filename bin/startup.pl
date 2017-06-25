@@ -34,7 +34,7 @@ sub todo_routing {
 	$req->set_out_header('Access-Control-Allow-Methods' => 'GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH');
 	my $method = ucfirst lc $req->method;
 	if($method eq 'Options') {
-		return ['getOptionsAny', 'L'];
+		return ['/getOptionsAny', 'L'];
 	}
 	if ($req->path =~ m'^/(\d+)') {
 		$req->param(id => $1);
@@ -46,7 +46,7 @@ sub todo_routing {
 		}
 		$req->note(item => $item);
 	}
-	my $action = 'ajax';
+	my $action = '/ajax';
 	if (defined $req->param('id') || $method eq 'Post') {
 		$action .= $method . 'Todo';
 	} else {
