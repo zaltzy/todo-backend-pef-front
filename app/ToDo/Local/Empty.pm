@@ -7,3 +7,4 @@ sub body {
 	return {result => "OK"};
 }
 
+1;
