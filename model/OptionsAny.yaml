@@ -1,0 +1,6 @@
+---
+model: Empty::body
+result:
+  OK:
+    answer: ""
+    status: 204
