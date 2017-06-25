@@ -33,9 +33,9 @@ sub todo_routing {
 	$req->set_out_header('Access-Control-Allow-Headers' => 'accept, content-type');
 	$req->set_out_header('Access-Control-Allow-Methods' => 'GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH');
 	my $method = ucfirst lc $req->method;
-	if($method eq 'Options') {
-		return ['getOptionsAny', 'L'];
-	}
+#	if($method eq 'Options') {
+#		return ['getOptionsAny', 'L'];
+#	}
 	if ($req->path =~ m'^/(\d+)') {
 		$req->param(id => $1);
 	}
