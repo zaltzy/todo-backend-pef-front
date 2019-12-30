@@ -5,5 +5,4 @@ params:
     filter: Item::load
   title: $title
   completed: $completed
-  order: $order
 model: Item::update
