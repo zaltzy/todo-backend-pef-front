@@ -4,5 +4,6 @@ params:
     base: $id
     filter: Item::load
   title: $title
+  order: $order
   completed: $completed
 model: Item::update
